@@ -15,7 +15,7 @@ If you're not going to use/test HRM you can ignore the labels for lb: these are 
 If you'd like to convert HRM to support Docker UCP version 2.2.x, change the labels to this:
 ```
       labels:
-          com.docker.ucp.mesh.http.80-81: "external_route=http://marriott.apps.docker.ee,internal_port=80","external_route=http://marriott.apps.docker.ee,internal_port=80"
+        com.docker.ucp.mesh.http.80-11: "external_route=http://marriott.apps.docker.ee,internal_port=80"
 ```
 
 In the docker-compose file we mount the nfs volume and specify it as read-only (ro)

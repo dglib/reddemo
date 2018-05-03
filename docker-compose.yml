@@ -2,18 +2,19 @@ version: "3.2"
 
 services:
   demo:
-    #image: shaker242/dlogo:red1
-    build: redweb
+    image: shaker242/dlogo:red1
     deploy:
       replicas: 1
       placement:
-        constraints: [node.role == worker]
+        constraints: 
+          - node.role==worker
+          - node.platform.os==linux
       labels:
         com.docker.lb.hosts: marriott.apps.docker.ee
         com.docker.lb.network: ucp-hrm
-        com.docker.lb.port: 80
+        com.docker.lb.port: "80"
     ports:
-      - "80"
+      - 80
     networks:
       - ucp-hrm
     volumes:

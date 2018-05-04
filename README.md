@@ -1,18 +1,18 @@
 # REDDEMO
 This is a brief nginx demo to illistrate how to mount containers to NFS for shared persistance.
 
-## NFS PREP:
+## NFS Share Prep:
 The NFS server will have this mapping in the /etc/exports file:
 ```
 /nfs/marriott *(rw,sync,no_subtree_check,all_squash,anonuid=65534,anongid=65534)
 ```
-*note, I'm using Ubuntu, under RHEL or CentOS you'll map the UID/GID for nfsnobody.
+* Note, I'm using Ubuntu, under RHEL or CentOS you'll map the UID/GID for nfsnobody.
 
 The above share's the mount point /nfs/marriott to the world, makes it writable, commits the io before acknowledgment, skips host file checks, changes "all" users that write to the NFS filesystem to user nobody:nogroup (nfsnobody:nfsnogroup).
 
-*note, I am making the NFS share writable since I'll be coping in the files to be shared among the containers separtly; we'll mount them into the container as read-only (see the docker-compose.yml file).
+* Note, I am making the NFS share writable since I'll be coping in the files to be shared among the containers separtly; we'll mount them into the container as read-only (see the docker-compose.yml file).
 
-## EXPORT PREP
+## NFS Export Prep
 Now I'll chown the /nfs/marriott directory and all the files contained there in to nobody:nogroup and list them all out for you. I elected for chown 775; however, 755 would have worked as well since the share will be read-only.
 ```
 shaker@nfs1:/$ ls -ld /nfs/marriott/

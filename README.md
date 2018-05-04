@@ -38,10 +38,10 @@ docker build -t repo/image:tag -f redweb/Dockerfile .
 Now launch the server... 
 
 I loaded my admin client bundle and ran a docker stack deploy... you can also just paste the docker-compose.yml file into your UCP > Stack > Create... 
-
+```
 DockerMac:reddemo $ docker stack deploy -c docker-compose.yml reddemo
 Creating service reddemo_demo
-
+```
 Use this image in docker-compose.yml or mine if you'd like shaker242/dlogo:red1
 
 If you're not going to use/test HRM you can ignore the labels for lb: these are for Docker 2.0 (UCP 3.0.0+)

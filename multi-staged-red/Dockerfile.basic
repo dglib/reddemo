@@ -1,0 +1,14 @@
+FROM alpine:3.7 as base
+RUN apk upgrade --update-cache --available
+RUN apk add --no-cache curl
+
+FROM ubuntu:16.04 as hello
+RUN apt-get update 
+RUN echo hello > /hello
+
+FROM alpine:latest as world
+RUN echo world > /world
+
+FROM base
+COPY --from=hello /hello /hello
+COPY --from=world /world /world

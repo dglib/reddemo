@@ -38,3 +38,8 @@ If you so desired, in this use case you could disable logging or set a writeable
           readOnlyRootFilesystem: false
 ```
 If you test this out; I've pinned it to a node in my lab, you'll want to remove or edit this out.
+
+This was deployed under Docker EE 2.0/ UCP 3.0.0 via kubectl:
+```
+kubectl apply -n default -f trust-demo.yml
+```

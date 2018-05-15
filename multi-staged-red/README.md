@@ -1,5 +1,8 @@
 # Multi-Stage Docker Example
-This primary applicaiton for illistration is the Marriott nodejs app, it's simple but shows how you can combine build jobs. The other build is an even more simple, but layered multi-staged app to further show how complexity can be resolved through this technique. 
+### More information on Multi-Stage builds and build options
+https://docs.docker.com/develop/develop-images/multistage-build/
+
+This primary application for illistration is the Marriott nodejs app, it's simple but shows how you can combine build jobs. The other build is an even more simple, but layered multi-staged app to further show how complexity can be resolved through this technique. 
 
 The primary Docker file includes 2 parts, the first part...
 ```
@@ -72,11 +75,8 @@ docker build -t basic -f Dockerfile.basic .
 Then run the container to search the directories:
 ```
 $ docker run -ti basic
-/ # ls /
+# ls /
 bin    dev    etc    hello  home   lib    media  mnt    proc   root   run    sbin   srv    sys    tmp    usr    var    world
-/ #
 ```
 
-### More information on Multi-Stage builds and build options
-https://docs.docker.com/develop/develop-images/multistage-build/
 

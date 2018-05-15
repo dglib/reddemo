@@ -1,4 +1,4 @@
-# Adding security to docker images and deployments
+# Adding security to docker images and deployments (swarm & kubernetes)
 ### Step 1, the Dockerfile
 The step here is to set the user as 'nginx' and chown it's directories to that username.
 ```
@@ -8,6 +8,7 @@ USER nginx
 ```
 This means we when run the container it runs as uid 100 (nginx) and gid 101 (nginx). The user will then be run as this nonprivilaged user and you wont be able to su into root. Also, we'll listen on port 8080 inside the container.
 
+### Run the image and verify user access privileges 
 ```
 DockerMac:trust $ docker run -d --rm -p 8080:8080 shaker242/dlogo:trust
 0af342973636e4a508f64da868281c075de3c1b1ee1dc579062dde17710b13f5
@@ -21,7 +22,7 @@ uid=100(nginx) gid=101(nginx) groups=82(www-data),101(nginx)
 su: must be suid to work properly
 / $
 ```
-
+### Deploy in kubernetes with securityContext
 In kurbernetes, we'll futher extend security capabilities by dropping all Linux root level privilages for this nginx (uid=100) user. 
 
 ```
